@@ -43,7 +43,7 @@ void loadMovie() {
   String f;
   do 
   {
-   f = filenames[int(random(filenames.length))]
+   f = filenames[int(random(filenames.length))];
   } 
   while (f.equals(".DS_Store"));
   
