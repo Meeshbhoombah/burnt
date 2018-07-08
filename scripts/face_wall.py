@@ -7,4 +7,5 @@ for c in range(0, 8):
     for r in rs:
         lines.append('  {"point": [%.2f, %.2f, %.2f]}' %
                      (c*spacing, 0, (r)*spacing))
+
 print '[\n' + ',\n'.join(lines) + '\n]'
