@@ -41,9 +41,12 @@ void loadMovie() {
   String[] filenames = folder.list();
 
   String f;
-  do {
+  do 
+  {
    f = filenames[int(random(filenames.length))]
-  } while (f.equals(".DS_Store"));
+  } 
+  while (f.equals(".DS_Store"));
+  
   print("loading '");
   print(f);
   println("'");
