@@ -6,14 +6,17 @@
 import cv2
 import sys
 
+
+class Burnt:
+    """Creates a """
+
 def rename(filename, type = None):
     """Takes in a filepath and outputs the filepath with the renamed output file"""
     output_elements = filename.split('.')
 
     if type is None:
         print("-*- BUILDING OUTPUT FILEPATH -*-")
-        output_elements.insert(1, "_resized")
-        output_elements.insert(2, ".")
+        output_elements.insert(1, "_resized.")
         return ''.join(output_elements) 
 
 
@@ -25,22 +28,25 @@ def main(args):
     # CLI arguments passed in as string
     grid_X = int(args[2])
     grid_Y = int(args[3])
-  
+    
+
+    # open video at filepath
     cap = cv2.VideoCapture(filename)
-    # open video at filepath and attempt to read first
-    # frame of the video
+    # attempt to read first frame of the video
     success, image = cap.read()
 
     if not success:
         print("Could not read file at given file path.")
     
-    # file exists and could read, create output path to
-    # release resized image as a sequence
+    # if file exists and read is success, create output 
+    # path to release resized image as a sequence
     out_path = rename(filename)
-    out = cv2.VideoWriter(out_path)
+
+    
+    out = cv2.VideoWriter(out_path, 0, 0x415A5052, 1, (grid_X, grid_Y))
         
     while success:
-        resized = cv2.resize(image, (grid_X, grid_Y), interpolation = cv2.INTER_LINEAR)
+        resized = cv2.resize(image, fx=0.5, fy=0.5, interpolation = cv2.INTER_LANCZOS4)
         out.write(resized) 
 
 
